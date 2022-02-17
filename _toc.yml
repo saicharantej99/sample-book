@@ -4,8 +4,6 @@
 format: jb-book
 root: intro
 chapters:
-- file: markdown
-- file: notebooks
-- file: Linear_Regression_Hands_On
+- file: Linear_Regression_Hands_On_Bikes
 - file: Keyword-Extraction-Resume-Using-Spacy
 - file: Market_Basket_Analysis_Confectionary
