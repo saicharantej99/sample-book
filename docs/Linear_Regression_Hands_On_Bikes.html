@@ -1,0 +1,2166 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Feedback First - Machine Learning Track &#8212; Sample Notebook</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="Keyword-Extraction-Resume-Using-Spacy.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Sample Notebook</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Feedback First - Machine Learning Track
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Market_Basket_Analysis_Confectionary.html">
+   Discover Food Bundles
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Linear_Regression_Hands_On_Bikes.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Linear_Regression_Hands_On_Bikes.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Feedback First - Machine Learning Track
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression">
+   Linear Regression
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#agenda">
+     Agenda
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loading-the-data-a-id-read">
+     1.1. Loading the data
+     <a id="read">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-the-data-a-id-visualize">
+     1.2. Visualizing the data
+     <a id="visualize">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#form-of-linear-regression-a-id-form">
+     2.1. Form of linear regression
+     <a id="form">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-a-linear-regression-model-a-id-build">
+     2.2. Building a linear regression model
+     <a id="build">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-the-model-for-prediction-a-id-using">
+     2.3. Using the model for prediction
+     <a id="using">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#does-the-scale-of-the-features-matter-a-id-scale">
+     2.4. Does the scale of the features matter?
+     <a id="scale">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-the-data-part-2-a-id-viz2">
+     3.1 Visualizing the data (part 2)
+     <a id="viz2">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-more-features-to-the-model-a-id-addfeatures">
+     3.2. Adding more features to the model
+     <a id="addfeatures">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-selection-a-id-featureselection">
+     4.1. Feature selection
+     <a id="featureselection">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluation-metrics-for-regression-problems-a-id-metrics">
+     4.2. Evaluation metrics for regression problems
+     <a id="metrics">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparing-models-with-train-test-split-and-rmse-a-id-comparingrmse">
+     4.3. Comparing models with train/test split and RMSE
+     <a id="comparingRMSE">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparing-testing-rmse-with-null-rmse-a-id-testrmse">
+     4.4. Comparing testing RMSE with null RMSE
+     <a id="testRMSE">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#handling-categorical-features-a-id-catfeatures">
+     5.1. Handling categorical features
+     <a id="catfeatures">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-engineering-a-id-featureengineering">
+     5.2. Feature engineering
+     <a id="featureengineering">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#advantages-and-disdvantages-a-id-advantages">
+     6. Advantages and Disdvantages
+     <a id="advantages">
+     </a>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Feedback First - Machine Learning Track</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Feedback First - Machine Learning Track
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression">
+   Linear Regression
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#agenda">
+     Agenda
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loading-the-data-a-id-read">
+     1.1. Loading the data
+     <a id="read">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-the-data-a-id-visualize">
+     1.2. Visualizing the data
+     <a id="visualize">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#form-of-linear-regression-a-id-form">
+     2.1. Form of linear regression
+     <a id="form">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-a-linear-regression-model-a-id-build">
+     2.2. Building a linear regression model
+     <a id="build">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-the-model-for-prediction-a-id-using">
+     2.3. Using the model for prediction
+     <a id="using">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#does-the-scale-of-the-features-matter-a-id-scale">
+     2.4. Does the scale of the features matter?
+     <a id="scale">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-the-data-part-2-a-id-viz2">
+     3.1 Visualizing the data (part 2)
+     <a id="viz2">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-more-features-to-the-model-a-id-addfeatures">
+     3.2. Adding more features to the model
+     <a id="addfeatures">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-selection-a-id-featureselection">
+     4.1. Feature selection
+     <a id="featureselection">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evaluation-metrics-for-regression-problems-a-id-metrics">
+     4.2. Evaluation metrics for regression problems
+     <a id="metrics">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparing-models-with-train-test-split-and-rmse-a-id-comparingrmse">
+     4.3. Comparing models with train/test split and RMSE
+     <a id="comparingRMSE">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparing-testing-rmse-with-null-rmse-a-id-testrmse">
+     4.4. Comparing testing RMSE with null RMSE
+     <a id="testRMSE">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#handling-categorical-features-a-id-catfeatures">
+     5.1. Handling categorical features
+     <a id="catfeatures">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-engineering-a-id-featureengineering">
+     5.2. Feature engineering
+     <a id="featureengineering">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#advantages-and-disdvantages-a-id-advantages">
+     6. Advantages and Disdvantages
+     <a id="advantages">
+     </a>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="feedback-first-machine-learning-track">
+<h1>Feedback First - Machine Learning Track<a class="headerlink" href="#feedback-first-machine-learning-track" title="Permalink to this headline">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="linear-regression">
+<h1>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h1>
+<section id="agenda">
+<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="#dataset">Bike Sharing Demand Dataset</a></p>
+<ul class="simple">
+<li><p>1.1 <a class="reference external" href="#read">Loading the data</a></p></li>
+<li><p>1.2 <a class="reference external" href="#visualize">Visualizing the data</a> <br><br></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#lrbasics">Linear regression basics</a></p>
+<ul class="simple">
+<li><p>2.1 <a class="reference external" href="#form">Form of linear regression</a></p></li>
+<li><p>2.2 <a class="reference external" href="#build">Building a linear regression model</a></p></li>
+<li><p>2.3 <a class="reference external" href="#using">Using the model for prediction</a></p></li>
+<li><p>2.4 <a class="reference external" href="#scale">Does the scale of the features matter?</a>  <br><br></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#mfeatures">Working with multiple features</a></p>
+<ul class="simple">
+<li><p>3.1 <a class="reference external" href="#viz2">Visualizing the data (part 2)</a></p></li>
+<li><p>3.2 <a class="reference external" href="#addfeatures">Adding more features to the model</a>  <br><br></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#choosingmodel">Choosing between models</a></p>
+<ul class="simple">
+<li><p>4.1 <a class="reference external" href="#featureselection">Feature selection</a></p></li>
+<li><p>4.2 <a class="reference external" href="#metrics">Evaluation metrics for regression problems</a></p></li>
+<li><p>4.3 <a class="reference external" href="#comparingRMSE">Comparing models with train/test split and RMSE</a></p></li>
+<li><p>4.4 <a class="reference external" href="#testRMSE">Comparing testing RMSE with null RMSE</a>  <br><br></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#creatingfeatures">Creating features</a></p>
+<ul class="simple">
+<li><p>5.1. <a class="reference external" href="#catfeatures">Handling categorical features</a></p></li>
+<li><p>5.2. <a class="reference external" href="#featureengineering">Feature engineering</a>    <br><br></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#advantages">Advantages/Disadvantages</a></p></li>
+</ol>
+<h1> 1. Bike Sharing Demand Dataset</h1>
+<h2>Forecast use of a city bikeshare system</h2>
+<p/>
+You are provided hourly rental data spanning two years. For this competition, the training set is comprised of the first 19 days of each month, while the test set is the 20th to the end of the month. You must <b>predict the <u>total count of bikes rented</u> during each hour</b> covered by the test set, using only information available prior to the rental period.
+<p/>
+<b>Data Fields</b>
+<br/>
+datetime - hourly date + timestamp<br/>
+season -  1 = spring, 2 = summer, 3 = fall, 4 = winter <br/>
+holiday - whether the day is considered a holiday<br/>
+workingday - whether the day is neither a weekend nor holiday<br/>
+weather - 1: Clear, Few clouds, Partly cloudy, Partly cloudy 
+2: Mist + Cloudy, Mist + Broken clouds, Mist + Few clouds, Mist 
+3: Light Snow, Light Rain + Thunderstorm + Scattered clouds, Light Rain + Scattered clouds 
+4: Heavy Rain + Ice Pallets + Thunderstorm + Mist, Snow + Fog <br/>
+temp - temperature in Celsius<br/>
+atemp - "feels like" temperature in Celsius<br/>
+humidity - relative humidity<br/>
+windspeed - wind speed<br/>
+casual - number of non-registered user rentals initiated<br/>
+registered - number of registered user rentals initiated<br/>
+count - number of total rentals<br/></section>
+<section id="loading-the-data-a-id-read">
+<h2>1.1. Loading the data <a id='read'><a class="headerlink" href="#loading-the-data-a-id-read" title="Permalink to this headline">¶</a></h2>
+<p>We’ll be working with a dataset from Capital Bikeshare that was used in a Kaggle competition (<a class="reference external" href="https://www.kaggle.com/c/bike-sharing-demand/data">data dictionary</a>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read the data and set the datetime as the index</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/upxacademy/ML_with_Python/master/Datasets/bikeshare.csv?token=AYxzdiGnjM610dBT7PuwUnUNOmm3bGcvks5ZFDyLwA%3D%3D&#39;</span>
+<span class="n">bikes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;datetime&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_5928</span>\<span class="mf">453499380.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># read the data and set the datetime as the index</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/upxacademy/ML_with_Python/master/Datasets/bikeshare.csv?token=AYxzdiGnjM610dBT7PuwUnUNOmm3bGcvks5ZFDyLwA%3D%3D&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">bikes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;datetime&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>season</th>
+      <th>holiday</th>
+      <th>workingday</th>
+      <th>weather</th>
+      <th>temp</th>
+      <th>atemp</th>
+      <th>humidity</th>
+      <th>windspeed</th>
+      <th>casual</th>
+      <th>registered</th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>datetime</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2011-01-01 00:00:00</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>9.84</td>
+      <td>14.395</td>
+      <td>81</td>
+      <td>0.0</td>
+      <td>3</td>
+      <td>13</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>2011-01-01 01:00:00</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>9.02</td>
+      <td>13.635</td>
+      <td>80</td>
+      <td>0.0</td>
+      <td>8</td>
+      <td>32</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>2011-01-01 02:00:00</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>9.02</td>
+      <td>13.635</td>
+      <td>80</td>
+      <td>0.0</td>
+      <td>5</td>
+      <td>27</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>2011-01-01 03:00:00</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>9.84</td>
+      <td>14.395</td>
+      <td>75</td>
+      <td>0.0</td>
+      <td>3</td>
+      <td>10</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>2011-01-01 04:00:00</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>9.84</td>
+      <td>14.395</td>
+      <td>75</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Questions:</strong></p>
+<ul class="simple">
+<li><p>What does each observation represent?</p></li>
+<li><p>What is the response variable (as defined by Kaggle)?</p></li>
+<li><p>How many features are there?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &quot;count&quot; is a method, so it&#39;s best to name that column something else</span>
+<span class="n">bikes</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;count&#39;</span><span class="p">:</span><span class="s1">&#39;total&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikes</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>season</th>
+      <th>holiday</th>
+      <th>workingday</th>
+      <th>weather</th>
+      <th>temp</th>
+      <th>atemp</th>
+      <th>humidity</th>
+      <th>windspeed</th>
+      <th>casual</th>
+      <th>registered</th>
+      <th>total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>10886.000000</td>
+      <td>10886.000000</td>
+      <td>10886.000000</td>
+      <td>10886.000000</td>
+      <td>10886.00000</td>
+      <td>10886.000000</td>
+      <td>10886.000000</td>
+      <td>10886.000000</td>
+      <td>10886.000000</td>
+      <td>10886.000000</td>
+      <td>10886.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>2.506614</td>
+      <td>0.028569</td>
+      <td>0.680875</td>
+      <td>1.418427</td>
+      <td>20.23086</td>
+      <td>23.655084</td>
+      <td>61.886460</td>
+      <td>12.799395</td>
+      <td>36.021955</td>
+      <td>155.552177</td>
+      <td>191.574132</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.116174</td>
+      <td>0.166599</td>
+      <td>0.466159</td>
+      <td>0.633839</td>
+      <td>7.79159</td>
+      <td>8.474601</td>
+      <td>19.245033</td>
+      <td>8.164537</td>
+      <td>49.960477</td>
+      <td>151.039033</td>
+      <td>181.144454</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.82000</td>
+      <td>0.760000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>2.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>13.94000</td>
+      <td>16.665000</td>
+      <td>47.000000</td>
+      <td>7.001500</td>
+      <td>4.000000</td>
+      <td>36.000000</td>
+      <td>42.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>3.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>20.50000</td>
+      <td>24.240000</td>
+      <td>62.000000</td>
+      <td>12.998000</td>
+      <td>17.000000</td>
+      <td>118.000000</td>
+      <td>145.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>4.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>2.000000</td>
+      <td>26.24000</td>
+      <td>31.060000</td>
+      <td>77.000000</td>
+      <td>16.997900</td>
+      <td>49.000000</td>
+      <td>222.000000</td>
+      <td>284.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>4.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>4.000000</td>
+      <td>41.00000</td>
+      <td>45.455000</td>
+      <td>100.000000</td>
+      <td>56.996900</td>
+      <td>367.000000</td>
+      <td>886.000000</td>
+      <td>977.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="visualizing-the-data-a-id-visualize">
+<h2>1.2. Visualizing the data  <a id='visualize'><a class="headerlink" href="#visualizing-the-data-a-id-visualize" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pandas scatter plot</span>
+<span class="n">bikes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a0acdb6dd8&gt;
+</pre></div>
+</div>
+<img alt="_images/Linear_Regression_Hands_On_Bikes_11_1.png" src="_images/Linear_Regression_Hands_On_Bikes_11_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Seaborn scatter plot with regression line</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">bikes</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Avinash\Anaconda3\lib\site-packages\scipy\stats\stats.py:1713: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return np.add.reduce(sorted[indexer] * weights, axis=axis) / sumval
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x1a0ad0bacf8&gt;
+</pre></div>
+</div>
+<img alt="_images/Linear_Regression_Hands_On_Bikes_12_2.png" src="_images/Linear_Regression_Hands_On_Bikes_12_2.png" />
+</div>
+</div>
+<h1> 2. Linear Regression Basics  </h1>  <a id='lrbasics'></section>
+<section id="form-of-linear-regression-a-id-form">
+<h2>2.1. Form of linear regression  <a id='form'><a class="headerlink" href="#form-of-linear-regression-a-id-form" title="Permalink to this headline">¶</a></h2>
+<p><span class="math notranslate nohighlight">\(y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_nx_n\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y\)</span> is the response</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_0\)</span> is the intercept</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_1\)</span> is the coefficient for <span class="math notranslate nohighlight">\(x_1\)</span> (the first feature)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_n\)</span> is the coefficient for <span class="math notranslate nohighlight">\(x_n\)</span> (the nth feature)</p></li>
+</ul>
+<p>The <span class="math notranslate nohighlight">\(\beta\)</span> values are called the <strong>model coefficients</strong>:</p>
+<ul class="simple">
+<li><p>These values are estimated (or “learned”) during the model fitting process using the <strong>least squares criterion</strong>.</p></li>
+<li><p>Specifically, we are going to find the line (mathematically) which minimizes the <strong>sum of squared residuals</strong> (or “sum of squared errors”).</p></li>
+<li><p>And once we’ve learned these coefficients, we can use the model to predict the response.</p></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/upxacademy/ML_with_Python/master/images/estimating_coefficients.png?token=AH0Y7JmsKZPG913jPp4rVGpOba5gxbonks5ZFEq7wA%3D%3D"></img></p>
+<p>In the diagram above:</p>
+<ul class="simple">
+<li><p>The black dots are the <strong>observed values</strong> of x and y.</p></li>
+<li><p>The blue line is our <strong>least squares line</strong>.</p></li>
+<li><p>The red lines are the <strong>residuals</strong>, which are the vertical distances between the observed values and the least squares line.</p></li>
+</ul>
+</section>
+<section id="building-a-linear-regression-model-a-id-build">
+<h2>2.2. Building a linear regression model  <a id='build'><a class="headerlink" href="#building-a-linear-regression-model-a-id-build" title="Permalink to this headline">¶</a></h2>
+<p>Refer : <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html">http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create X and y</span>
+<span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">bikes</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">bikes</span><span class="o">.</span><span class="n">total</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import, instantiate, fit</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">linreg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">linreg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,
+         normalize=False)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the coefficients</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">linreg</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">linreg</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.04621295961681
+[9.17054048]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Interpreting the <strong>intercept</strong> (<span class="math notranslate nohighlight">\(\beta_0\)</span>):</p>
+<ul class="simple">
+<li><p>It is the value of <span class="math notranslate nohighlight">\(y\)</span> when <span class="math notranslate nohighlight">\(x\)</span>=0.</p></li>
+<li><p>Thus, it is the estimated number of rentals when the temperature is 0 degrees Celsius.</p></li>
+<li><p><strong>Note:</strong> It does not always make sense to interpret the intercept. (Why?)</p></li>
+</ul>
+<p>Interpreting the <strong>“temp” coefficient</strong> (<span class="math notranslate nohighlight">\(\beta_1\)</span>):</p>
+<ul class="simple">
+<li><p>It is the change in <span class="math notranslate nohighlight">\(y\)</span> divided by change in <span class="math notranslate nohighlight">\(x\)</span>, or the “slope”.</p></li>
+<li><p>Thus, a temperature increase of 1 degree Celsius is <strong>associated with</strong> a rental increase of 9.17 bikes.</p></li>
+<li><p>This is not a statement of causation.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_1\)</span> would be <strong>negative</strong> if an increase in temperature was associated with a <strong>decrease</strong> in rentals.</p></li>
+</ul>
+</section>
+<section id="using-the-model-for-prediction-a-id-using">
+<h2>2.3. Using the model for prediction  <a id='using'><a class="headerlink" href="#using-the-model-for-prediction-a-id-using" title="Permalink to this headline">¶</a></h2>
+<p>How many bike rentals would we predict if the temperature was 25 degrees Celsius?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># manually calculate the prediction</span>
+<span class="n">linreg</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span> <span class="n">linreg</span><span class="o">.</span><span class="n">coef_</span><span class="o">*</span><span class="mi">25</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([235.309725])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use the predict method</span>
+<span class="n">linreg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mi">25</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([235.309725])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="does-the-scale-of-the-features-matter-a-id-scale">
+<h2>2.4. Does the scale of the features matter?   <a id='scale'><a class="headerlink" href="#does-the-scale-of-the-features-matter-a-id-scale" title="Permalink to this headline">¶</a></h2>
+<p>Let’s say that temperature was measured in Fahrenheit, rather than Celsius. How would that affect the model?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a new column for Fahrenheit temperature</span>
+<span class="n">bikes</span><span class="p">[</span><span class="s1">&#39;temp_F&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bikes</span><span class="o">.</span><span class="n">temp</span> <span class="o">*</span> <span class="mf">1.8</span> <span class="o">+</span> <span class="mi">32</span>
+<span class="n">bikes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>season</th>
+      <th>holiday</th>
+      <th>workingday</th>
+      <th>weather</th>
+      <th>temp</th>
+      <th>atemp</th>
+      <th>humidity</th>
+      <th>windspeed</th>
+      <th>casual</th>
+      <th>registered</th>
+      <th>total</th>
+      <th>temp_F</th>
+    </tr>
+    <tr>
+      <th>datetime</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2011-01-01 00:00:00</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>9.84</td>
+      <td>14.395</td>
+      <td>81</td>
+      <td>0.0</td>
+      <td>3</td>
+      <td>13</td>
+      <td>16</td>
+      <td>49.712</td>
+    </tr>
+    <tr>
+      <th>2011-01-01 01:00:00</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>9.02</td>
+      <td>13.635</td>
+      <td>80</td>
+      <td>0.0</td>
+      <td>8</td>
+      <td>32</td>
+      <td>40</td>
+      <td>48.236</td>
+    </tr>
+    <tr>
+      <th>2011-01-01 02:00:00</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>9.02</td>
+      <td>13.635</td>
+      <td>80</td>
+      <td>0.0</td>
+      <td>5</td>
+      <td>27</td>
+      <td>32</td>
+      <td>48.236</td>
+    </tr>
+    <tr>
+      <th>2011-01-01 03:00:00</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>9.84</td>
+      <td>14.395</td>
+      <td>75</td>
+      <td>0.0</td>
+      <td>3</td>
+      <td>10</td>
+      <td>13</td>
+      <td>49.712</td>
+    </tr>
+    <tr>
+      <th>2011-01-01 04:00:00</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>9.84</td>
+      <td>14.395</td>
+      <td>75</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>49.712</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Seaborn scatter plot with regression line</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;temp_F&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">bikes</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Avinash\Anaconda3\lib\site-packages\scipy\stats\stats.py:1713: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return np.add.reduce(sorted[indexer] * weights, axis=axis) / sumval
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x1a0ade65a20&gt;
+</pre></div>
+</div>
+<img alt="_images/Linear_Regression_Hands_On_Bikes_25_2.png" src="_images/Linear_Regression_Hands_On_Bikes_25_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create X and y</span>
+<span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;temp_F&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">bikes</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">bikes</span><span class="o">.</span><span class="n">total</span>
+
+<span class="c1"># instantiate and fit</span>
+<span class="n">linreg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">linreg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># print the coefficients</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">linreg</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">linreg</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-156.98561782129428
+[5.09474471]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert 25 degrees Celsius to Fahrenheit</span>
+<span class="mi">25</span> <span class="o">*</span> <span class="mf">1.8</span> <span class="o">+</span> <span class="mi">32</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>77.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># predict rentals for 77 degrees Fahrenheit</span>
+<span class="n">linreg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="mi">77</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([235.309725])
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Conclusion:</strong> The scale of the features is <strong>irrelevant</strong> for linear regression models. When changing the scale, we simply change our <strong>interpretation</strong> of the coefficients.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># remove the temp_F column</span>
+<span class="n">bikes</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;temp_F&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##have to bring it to uniform scale</span>
+</pre></div>
+</div>
+</div>
+</div>
+<h1> 3. Working with multiple features  </h1>  <a id='mfeatures'></section>
+<section id="visualizing-the-data-part-2-a-id-viz2">
+<h2>3.1 Visualizing the data (part 2)  <a id='viz2'><a class="headerlink" href="#visualizing-the-data-part-2-a-id-viz2" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># explore more features</span>
+<span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="s1">&#39;season&#39;</span><span class="p">,</span> <span class="s1">&#39;weather&#39;</span><span class="p">,</span> <span class="s1">&#39;humidity&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># multiple scatter plots in Seaborn</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">bikes</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="n">feature_cols</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;reg&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Avinash\Anaconda3\lib\site-packages\scipy\stats\stats.py:1713: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return np.add.reduce(sorted[indexer] * weights, axis=axis) / sumval
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1a0adeb9278&gt;
+</pre></div>
+</div>
+<img alt="_images/Linear_Regression_Hands_On_Bikes_35_2.png" src="_images/Linear_Regression_Hands_On_Bikes_35_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># multiple scatter plots in Pandas</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">feature_cols</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">feature_cols</span><span class="p">):</span>
+    <span class="n">bikes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Linear_Regression_Hands_On_Bikes_36_0.png" src="_images/Linear_Regression_Hands_On_Bikes_36_0.png" />
+</div>
+</div>
+<p>Are you seeing anything that you did not expect?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># box plot of rentals, grouped by season</span>
+<span class="n">bikes</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">&#39;season&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a0af164fd0&gt;
+</pre></div>
+</div>
+<img alt="_images/Linear_Regression_Hands_On_Bikes_38_1.png" src="_images/Linear_Regression_Hands_On_Bikes_38_1.png" />
+</div>
+</div>
+<p>Notably:</p>
+<ul class="simple">
+<li><p>A line can’t capture a non-linear relationship.</p></li>
+<li><p>There are more rentals in winter than in spring (?)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># line plot of rentals</span>
+<span class="n">bikes</span><span class="o">.</span><span class="n">total</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1a0af22a0b8&gt;
+</pre></div>
+</div>
+<img alt="_images/Linear_Regression_Hands_On_Bikes_40_1.png" src="_images/Linear_Regression_Hands_On_Bikes_40_1.png" />
+</div>
+</div>
+<p>What does this tell us?</p>
+<p>There are more rentals in the winter than the spring, but only because the system is experiencing <strong>overall growth</strong> and the winter months happen to come after the spring months.</p>
+</section>
+<section id="adding-more-features-to-the-model-a-id-addfeatures">
+<h2>3.2. Adding more features to the model   <a id='addfeatures'><a class="headerlink" href="#adding-more-features-to-the-model-a-id-addfeatures" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a list of features</span>
+<span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="s1">&#39;season&#39;</span><span class="p">,</span> <span class="s1">&#39;weather&#39;</span><span class="p">,</span> <span class="s1">&#39;humidity&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create X and y</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">bikes</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">bikes</span><span class="o">.</span><span class="n">total</span>
+
+<span class="c1"># instantiate and fit</span>
+<span class="n">linreg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">linreg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># print the coefficients</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">linreg</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">linreg</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>159.52068786129772
+[ 7.86482499 22.53875753  6.67030204 -3.11887338]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pair the feature names with the coefficients</span>
+<span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">feature_cols</span><span class="p">,</span> <span class="n">linreg</span><span class="o">.</span><span class="n">coef_</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;temp&#39;, 7.864824992477442),
+ (&#39;season&#39;, 22.53875753246678),
+ (&#39;weather&#39;, 6.670302035923743),
+ (&#39;humidity&#39;, -3.1188733823964956)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Interpreting the coefficients:</p>
+<ul class="simple">
+<li><p>Holding all other features fixed, a 1 unit increase in <strong>temperature</strong> is associated with a <strong>rental increase of 7.86 bikes</strong>.</p></li>
+<li><p>Holding all other features fixed, a 1 unit increase in <strong>season</strong> is associated with a <strong>rental increase of 22.5 bikes</strong>.</p></li>
+<li><p>Holding all other features fixed, a 1 unit increase in <strong>weather</strong> is associated with a <strong>rental increase of 6.67 bikes</strong>.</p></li>
+<li><p>Holding all other features fixed, a 1 unit increase in <strong>humidity</strong> is associated with a <strong>rental decrease of 3.12 bikes</strong>.</p></li>
+</ul>
+<p>Does anything look incorrect?</p>
+<h1> 4. Choosing between models  </h1>   <a id='choosingmodel'></section>
+<section id="feature-selection-a-id-featureselection">
+<h2>4.1. Feature selection    <a id='featureselection'><a class="headerlink" href="#feature-selection-a-id-featureselection" title="Permalink to this headline">¶</a></h2>
+<p>How do we choose which features to include in the model? We’re going to use <strong>train/test split</strong> (and eventually <strong>cross-validation</strong>).</p>
+<p>Why not use of <strong>p-values</strong> or <strong>R-squared</strong> for feature selection?</p>
+<ul class="simple">
+<li><p>Linear models rely upon <strong>a lot of assumptions</strong> (such as the features being independent), and if those assumptions are violated, p-values and R-squared are less reliable. Train/test split relies on fewer assumptions.</p></li>
+<li><p>Features that are unrelated to the response can still have <strong>significant p-values</strong>.</p></li>
+<li><p>Adding features to your model that are unrelated to the response will always <strong>increase the R-squared value</strong>, and adjusted R-squared does not sufficiently account for this.</p></li>
+<li><p>p-values and R-squared are <strong>proxies</strong> for our goal of generalization, whereas train/test split and cross-validation attempt to <strong>directly estimate</strong> how well the model will generalize to out-of-sample data.</p></li>
+</ul>
+<p>More generally:</p>
+<ul class="simple">
+<li><p>There are different methodologies that can be used for solving any given data science problem, and this course follows a <strong>machine learning methodology</strong>.</p></li>
+<li><p>This course focuses on <strong>general purpose approaches</strong> that can be applied to any model, rather than model-specific approaches.</p></li>
+</ul>
+</section>
+<section id="evaluation-metrics-for-regression-problems-a-id-metrics">
+<h2>4.2. Evaluation metrics for regression problems   <a id='metrics'><a class="headerlink" href="#evaluation-metrics-for-regression-problems-a-id-metrics" title="Permalink to this headline">¶</a></h2>
+<p>Evaluation metrics for classification problems, such as <strong>accuracy</strong>, are not useful for regression problems. We need evaluation metrics designed for comparing <strong>continuous values</strong>.</p>
+<p>Here are three common evaluation metrics for regression problems:</p>
+<p><strong>Mean Absolute Error</strong> (MAE) is the mean of the absolute value of the errors:</p>
+<div class="math notranslate nohighlight">
+\[\frac 1n\sum_{i=1}^n|y_i-\hat{y}_i|\]</div>
+<p><strong>Mean Squared Error</strong> (MSE) is the mean of the squared errors:</p>
+<div class="math notranslate nohighlight">
+\[\frac 1n\sum_{i=1}^n(y_i-\hat{y}_i)^2\]</div>
+<p><strong>Root Mean Squared Error</strong> (RMSE) is the square root of the mean of the squared errors:</p>
+<div class="math notranslate nohighlight">
+\[\sqrt{\frac 1n\sum_{i=1}^n(y_i-\hat{y}_i)^2}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example true and predicted response values</span>
+<span class="n">true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate these metrics by hand!</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;MAE:&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;MSE:&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;RMSE:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAE: 2.0
+MSE: 7.5
+RMSE: 2.7386127875258306
+</pre></div>
+</div>
+</div>
+</div>
+<p>Comparing these metrics:</p>
+<ul class="simple">
+<li><p><strong>MAE</strong> is the easiest to understand, because it’s the average error.</p></li>
+<li><p><strong>MSE</strong> is more popular than MAE, because MSE “punishes” larger errors, which tends to be useful in the real world.</p></li>
+<li><p><strong>RMSE</strong> is even more popular than MSE, because RMSE is interpretable in the “y” units.</p></li>
+</ul>
+<p>All of these are <strong>loss functions</strong>, because we want to minimize them.</p>
+<p>Here’s an additional example, to demonstrate how MSE/RMSE punish larger errors:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># same true values as above</span>
+<span class="n">true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="c1"># new set of predicted values</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+
+<span class="c1"># MAE is the same as before</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;MAE:&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">))</span>
+
+<span class="c1"># MSE and RMSE are larger than before</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;MSE:&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;RMSE:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">true</span><span class="p">,</span> <span class="n">pred</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAE: 2.0
+MSE: 16.0
+RMSE: 4.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="comparing-models-with-train-test-split-and-rmse-a-id-comparingrmse">
+<h2>4.3. Comparing models with train/test split and RMSE      <a id='comparingRMSE'><a class="headerlink" href="#comparing-models-with-train-test-split-and-rmse-a-id-comparingrmse" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># define a function that accepts a list of features and returns testing RMSE</span>
+<span class="k">def</span> <span class="nf">train_test_rmse</span><span class="p">(</span><span class="n">feature_cols</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">bikes</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">bikes</span><span class="o">.</span><span class="n">total</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+    <span class="n">linreg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="n">linreg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">linreg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compare different sets of features</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">train_test_rmse</span><span class="p">([</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="s1">&#39;season&#39;</span><span class="p">,</span> <span class="s1">&#39;weather&#39;</span><span class="p">,</span> <span class="s1">&#39;humidity&#39;</span><span class="p">]))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">train_test_rmse</span><span class="p">([</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="s1">&#39;season&#39;</span><span class="p">,</span> <span class="s1">&#39;weather&#39;</span><span class="p">]))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">train_test_rmse</span><span class="p">([</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="s1">&#39;season&#39;</span><span class="p">,</span> <span class="s1">&#39;humidity&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>155.64945913079674
+164.1653997629182
+155.59818936691417
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using these as features is not allowed!</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">train_test_rmse</span><span class="p">([</span><span class="s1">&#39;casual&#39;</span><span class="p">,</span> <span class="s1">&#39;registered&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0601428880347174e-13
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="comparing-testing-rmse-with-null-rmse-a-id-testrmse">
+<h2>4.4. Comparing testing RMSE with null RMSE          <a id='testRMSE'><a class="headerlink" href="#comparing-testing-rmse-with-null-rmse-a-id-testrmse" title="Permalink to this headline">¶</a></h2>
+<p>Null RMSE is the RMSE that could be achieved by <strong>always predicting the mean response value</strong>. It is a benchmark against which you may want to measure your regression model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split X and y into training and testing sets</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+
+<span class="c1"># create a NumPy array with the same shape as y_test</span>
+<span class="n">y_null</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># fill the array with the mean value of y_test</span>
+<span class="n">y_null</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">y_null</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([192.26451139, 192.26451139, 192.26451139, ..., 192.26451139,
+       192.26451139, 192.26451139])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute null RMSE</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_null</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>179.57906896465727
+</pre></div>
+</div>
+</div>
+</div>
+<h1> 5. Creating Features   </h1>   <a id='creatingfeatures'></section>
+<section id="handling-categorical-features-a-id-catfeatures">
+<h2>5.1. Handling categorical features  <a id='catfeatures'><a class="headerlink" href="#handling-categorical-features-a-id-catfeatures" title="Permalink to this headline">¶</a></h2>
+<p>scikit-learn expects all features to be numeric. So how do we include a categorical feature in our model?</p>
+<ul class="simple">
+<li><p><strong>Ordered categories:</strong> transform them to sensible numeric values (example: small=1, medium=2, large=3)</p></li>
+<li><p><strong>Unordered categories:</strong> use dummy encoding (0/1)</p></li>
+</ul>
+<p>What are the categorical features in our dataset?</p>
+<ul class="simple">
+<li><p><strong>Ordered categories:</strong> weather (already encoded with sensible numeric values)</p></li>
+<li><p><strong>Unordered categories:</strong> season (needs dummy encoding), holiday (already dummy encoded), workingday (already dummy encoded)</p></li>
+</ul>
+<p>For season, we can’t simply leave the encoding as 1 = spring, 2 = summer, 3 = fall, and 4 = winter, because that would imply an <strong>ordered relationship</strong>. Instead, we create <strong>multiple dummy variables:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create dummy variables</span>
+<span class="n">season_dummies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">bikes</span><span class="o">.</span><span class="n">season</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;season&#39;</span><span class="p">)</span>
+
+<span class="c1"># print 5 random rows</span>
+<span class="n">season_dummies</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>season_1</th>
+      <th>season_2</th>
+      <th>season_3</th>
+      <th>season_4</th>
+    </tr>
+    <tr>
+      <th>datetime</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2011-09-05 11:00:00</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2012-03-18 04:00:00</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2012-10-14 17:00:00</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2011-04-04 15:00:00</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2012-12-11 02:00:00</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>However, we actually only need <strong>three dummy variables (not four)</strong>, and thus we’ll drop the first dummy variable.</p>
+<p>Why? Because three dummies captures all of the “information” about the season feature, and implicitly defines spring (season 1) as the <strong>baseline level:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># drop the first column</span>
+<span class="n">season_dummies</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">season_dummies</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># print 5 random rows</span>
+<span class="n">season_dummies</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>season_2</th>
+      <th>season_3</th>
+      <th>season_4</th>
+    </tr>
+    <tr>
+      <th>datetime</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2011-09-05 11:00:00</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2012-03-18 04:00:00</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2012-10-14 17:00:00</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2011-04-04 15:00:00</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2012-12-11 02:00:00</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In general, if you have a categorical feature with <strong>k possible values</strong>, you create <strong>k-1 dummy variables</strong>.</p>
+<p>If that’s confusing, think about why we only need one dummy variable for holiday, not two dummy variables (holiday_yes and holiday_no).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># concatenate the original DataFrame and the dummy DataFrame (axis=0 means rows, axis=1 means columns)</span>
+<span class="n">bikes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">bikes</span><span class="p">,</span> <span class="n">season_dummies</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># print 5 random rows</span>
+<span class="n">bikes</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>season</th>
+      <th>holiday</th>
+      <th>workingday</th>
+      <th>weather</th>
+      <th>temp</th>
+      <th>atemp</th>
+      <th>humidity</th>
+      <th>windspeed</th>
+      <th>casual</th>
+      <th>registered</th>
+      <th>total</th>
+      <th>season_2</th>
+      <th>season_3</th>
+      <th>season_4</th>
+    </tr>
+    <tr>
+      <th>datetime</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2011-09-05 11:00:00</th>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>28.70</td>
+      <td>33.335</td>
+      <td>74</td>
+      <td>11.0014</td>
+      <td>101</td>
+      <td>207</td>
+      <td>308</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2012-03-18 04:00:00</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>17.22</td>
+      <td>21.210</td>
+      <td>94</td>
+      <td>11.0014</td>
+      <td>6</td>
+      <td>8</td>
+      <td>14</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2012-10-14 17:00:00</th>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>26.24</td>
+      <td>31.060</td>
+      <td>44</td>
+      <td>12.9980</td>
+      <td>193</td>
+      <td>346</td>
+      <td>539</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2011-04-04 15:00:00</th>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>31.16</td>
+      <td>33.335</td>
+      <td>23</td>
+      <td>36.9974</td>
+      <td>47</td>
+      <td>96</td>
+      <td>143</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2012-12-11 02:00:00</th>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>16.40</td>
+      <td>20.455</td>
+      <td>66</td>
+      <td>22.0028</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># include dummy variables for season in the model</span>
+<span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="s1">&#39;season_2&#39;</span><span class="p">,</span> <span class="s1">&#39;season_3&#39;</span><span class="p">,</span> <span class="s1">&#39;season_4&#39;</span><span class="p">,</span> <span class="s1">&#39;humidity&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">bikes</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">bikes</span><span class="o">.</span><span class="n">total</span>
+<span class="n">linreg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">linreg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">feature_cols</span><span class="p">,</span> <span class="n">linreg</span><span class="o">.</span><span class="n">coef_</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;temp&#39;, 11.186405863575786),
+ (&#39;season_2&#39;, -3.3905430997179926),
+ (&#39;season_3&#39;, -41.73686071317081),
+ (&#39;season_4&#39;, 64.41596146824205),
+ (&#39;humidity&#39;, -2.819481636259649)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>How do we interpret the season coefficients? They are <strong>measured against the baseline (spring)</strong>:</p>
+<ul class="simple">
+<li><p>Holding all other features fixed, <strong>summer</strong> is associated with a <strong>rental decrease of 3.39 bikes</strong> compared to the spring.</p></li>
+<li><p>Holding all other features fixed, <strong>fall</strong> is associated with a <strong>rental decrease of 41.7 bikes</strong> compared to the spring.</p></li>
+<li><p>Holding all other features fixed, <strong>winter</strong> is associated with a <strong>rental increase of 64.4 bikes</strong> compared to the spring.</p></li>
+</ul>
+<p>Would it matter if we changed which season was defined as the baseline?</p>
+<ul class="simple">
+<li><p>No, it would simply change our <strong>interpretation</strong> of the coefficients.</p></li>
+</ul>
+<p><strong>Important:</strong> Dummy encoding is relevant for all machine learning models, not just linear regression models.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compare original season variable with dummy variables</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">train_test_rmse</span><span class="p">([</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="s1">&#39;season&#39;</span><span class="p">,</span> <span class="s1">&#39;humidity&#39;</span><span class="p">]))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">train_test_rmse</span><span class="p">([</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="s1">&#39;season_2&#39;</span><span class="p">,</span> <span class="s1">&#39;season_3&#39;</span><span class="p">,</span> <span class="s1">&#39;season_4&#39;</span><span class="p">,</span> <span class="s1">&#39;humidity&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>155.59818936691417
+154.33394593635998
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="feature-engineering-a-id-featureengineering">
+<h2>5.2. Feature engineering     <a id='featureengineering'><a class="headerlink" href="#feature-engineering-a-id-featureengineering" title="Permalink to this headline">¶</a></h2>
+<p>See if you can create the following features:</p>
+<ul class="simple">
+<li><p><strong>hour:</strong> as a single numeric feature (0 through 23)</p></li>
+<li><p><strong>hour:</strong> as a categorical feature (use 23 dummy variables)</p></li>
+<li><p><strong>daytime:</strong> as a single categorical feature (daytime=1 from 7am to 8pm, and daytime=0 otherwise)</p></li>
+</ul>
+<p>Then, try using each of the three features (on its own) with <code class="docutils literal notranslate"><span class="pre">train_test_rmse</span></code> to see which one performs the best!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># hour as a numeric feature</span>
+<span class="n">bikes</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bikes</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">hour</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bikes</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>season</th>
+      <th>holiday</th>
+      <th>workingday</th>
+      <th>weather</th>
+      <th>temp</th>
+      <th>atemp</th>
+      <th>humidity</th>
+      <th>windspeed</th>
+      <th>casual</th>
+      <th>registered</th>
+      <th>total</th>
+      <th>season_2</th>
+      <th>season_3</th>
+      <th>season_4</th>
+      <th>hour</th>
+    </tr>
+    <tr>
+      <th>datetime</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2011-01-01 00:00:00</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>9.84</td>
+      <td>14.395</td>
+      <td>81</td>
+      <td>0.0</td>
+      <td>3</td>
+      <td>13</td>
+      <td>16</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2011-01-01 01:00:00</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>9.02</td>
+      <td>13.635</td>
+      <td>80</td>
+      <td>0.0</td>
+      <td>8</td>
+      <td>32</td>
+      <td>40</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># hour as a categorical feature</span>
+<span class="n">hour_dummies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">bikes</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;hour&#39;</span><span class="p">)</span>
+<span class="n">hour_dummies</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">hour_dummies</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">bikes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">bikes</span><span class="p">,</span> <span class="n">hour_dummies</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># daytime as a categorical feature</span>
+<span class="n">bikes</span><span class="p">[</span><span class="s1">&#39;daytime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">bikes</span><span class="o">.</span><span class="n">hour</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">bikes</span><span class="o">.</span><span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">21</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">train_test_rmse</span><span class="p">([</span><span class="s1">&#39;hour&#39;</span><span class="p">]))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">train_test_rmse</span><span class="p">(</span><span class="n">bikes</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">bikes</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;hour_&#39;</span><span class="p">)]))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">train_test_rmse</span><span class="p">([</span><span class="s1">&#39;daytime&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>165.67174264111398
+128.3112050281119
+144.89116360237935
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="advantages-and-disdvantages-a-id-advantages">
+<h2>6. Advantages and Disdvantages   <a id='advantages'><a class="headerlink" href="#advantages-and-disdvantages-a-id-advantages" title="Permalink to this headline">¶</a></h2>
+<p>Advantages of linear regression:</p>
+<ul class="simple">
+<li><p>Simple to explain</p></li>
+<li><p>Highly interpretable</p></li>
+<li><p>Model training and prediction are fast</p></li>
+<li><p>No tuning is required (excluding regularization)</p></li>
+<li><p>Features don’t need scaling</p></li>
+<li><p>Can perform well with a small number of observations</p></li>
+<li><p>Well-understood</p></li>
+</ul>
+<p>Disadvantages of linear regression:</p>
+<ul class="simple">
+<li><p>Presumes a linear relationship between the features and the response</p></li>
+<li><p>Performance is (generally) not competitive with the best supervised learning methods due to high bias</p></li>
+<li><p>Can’t automatically learn feature interactions</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Welcome to your Jupyter Book</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Keyword-Extraction-Resume-Using-Spacy.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Sai Charan Tej<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

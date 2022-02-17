@@ -1,0 +1,799 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Discover Food Bundles &#8212; Sample Notebook</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="Keyword-Extraction-Resume-Using-Spacy.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Sample Notebook</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Discover Food Bundles
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Market_Basket_Analysis_Confectionary.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Market_Basket_Analysis_Confectionary.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Discover Food Bundles
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-the-data-from-the-csv-file-into-a-dataframe">
+   1. Read the data from the csv file into a dataframe.
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-convert-the-datetime-object-column-to-a-datetime-column-and-set-it-as-index">
+     Step 2: Convert the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Datetime
+      </span>
+     </code>
+     object column to a datetime column and set it as index.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-3-identify-the-top-10-best-selling-and-worst-selling-items-in-the-confectionary">
+   Step 3: Identify the top-10 best-selling and worst-selling items in the confectionary.
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-4-find-the-day-and-the-timeslot-in-which-most-of-the-sales-are-happening-in-the-confectionary">
+   Step 4: Find the day and the timeslot in which most of the sales are happening in the confectionary.
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-5-convert-the-data-into-a-one-hot-encoded-format-containing-the-count-of-items-sold-in-a-transaction">
+     Step 5: Convert the data into a one-hot encoded format containing the count of items sold in a transaction.##
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-6-encode-the-data-into-1-s-and-0-s-to-apply-the-apriori-algorithm">
+   Step 6: Encode the data into 1’s and 0’s to apply the apriori algorithm.
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-7-generate-b-frequent-itemsets-b-and-b-association-rules-b-with-a-minimum-support-threshold-of-1-and-a-minimum-lift-value-of-1-sort-them-by-confidence-values">
+     Step 7:Generate
+     <b>
+      frequent itemsets
+     </b>
+     and
+     <b>
+      association rules
+     </b>
+     with a minimum support threshold of 1% and a minimum lift value of 1. Sort them by confidence values.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-8-what-percentage-of-transactions-involved-customers-buying-sandwich-and-coffee">
+   Step 8: What percentage of transactions involved customers buying ‘Sandwich’ and ‘Coffee’?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-9-what-is-the-b-probability-b-that-a-customer-coffee-given-that-he-bought-a-juice">
+   Step 9: What is the
+   <b>
+    probability
+   </b>
+   that a customer ‘Coffee’ given that he bought a ‘Juice’?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-10-which-item-lifts-the-coffee-s-purchase-by-the-most">
+   Step 10:Which item
+   <strong>
+    lifts
+   </strong>
+   the Coffee’s purchase by the most?
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Discover Food Bundles</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Discover Food Bundles
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-the-data-from-the-csv-file-into-a-dataframe">
+   1. Read the data from the csv file into a dataframe.
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-convert-the-datetime-object-column-to-a-datetime-column-and-set-it-as-index">
+     Step 2: Convert the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Datetime
+      </span>
+     </code>
+     object column to a datetime column and set it as index.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-3-identify-the-top-10-best-selling-and-worst-selling-items-in-the-confectionary">
+   Step 3: Identify the top-10 best-selling and worst-selling items in the confectionary.
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-4-find-the-day-and-the-timeslot-in-which-most-of-the-sales-are-happening-in-the-confectionary">
+   Step 4: Find the day and the timeslot in which most of the sales are happening in the confectionary.
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-5-convert-the-data-into-a-one-hot-encoded-format-containing-the-count-of-items-sold-in-a-transaction">
+     Step 5: Convert the data into a one-hot encoded format containing the count of items sold in a transaction.##
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-6-encode-the-data-into-1-s-and-0-s-to-apply-the-apriori-algorithm">
+   Step 6: Encode the data into 1’s and 0’s to apply the apriori algorithm.
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-7-generate-b-frequent-itemsets-b-and-b-association-rules-b-with-a-minimum-support-threshold-of-1-and-a-minimum-lift-value-of-1-sort-them-by-confidence-values">
+     Step 7:Generate
+     <b>
+      frequent itemsets
+     </b>
+     and
+     <b>
+      association rules
+     </b>
+     with a minimum support threshold of 1% and a minimum lift value of 1. Sort them by confidence values.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-8-what-percentage-of-transactions-involved-customers-buying-sandwich-and-coffee">
+   Step 8: What percentage of transactions involved customers buying ‘Sandwich’ and ‘Coffee’?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-9-what-is-the-b-probability-b-that-a-customer-coffee-given-that-he-bought-a-juice">
+   Step 9: What is the
+   <b>
+    probability
+   </b>
+   that a customer ‘Coffee’ given that he bought a ‘Juice’?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-10-which-item-lifts-the-coffee-s-purchase-by-the-most">
+   Step 10:Which item
+   <strong>
+    lifts
+   </strong>
+   the Coffee’s purchase by the most?
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <section id="discover-food-bundles">
+<h1>Discover Food Bundles<a class="headerlink" href="#discover-food-bundles" title="Permalink to this headline">¶</a></h1>
+<p>A food confectionary is undergoing a tough time in sales and wants use machine learning to turn their fortunes around. They have captured their daily transaction data from 30th Oct 2016 to 9th Apr 2017 and want to understand what are all the food bundles that are popular among their customers.</p>
+<p>Your job is to perform <b>Market Basket Analysis</b> using the Apriori algorithm and recommend the confectionary the food bundles that they should be marketing more.</p>
+<p><b>Below is the list of questions you need to crack as part of this assignment </b></p>
+<ol class="simple">
+<li><p>Read the data from the csv file into a dataframe.</p></li>
+<li><p>Convert the <code class="docutils literal notranslate"><span class="pre">Datetime</span></code> object column to a datetime column and set it as index.</p></li>
+<li><p>Identify the top-10 best-selling and worst-selling items in the confectionary.</p></li>
+<li><p>Find the day and the timeslot in which most of the sales are happening in the confectionary. <b>Hint:You need to extract the hour and day details from the <code class="docutils literal notranslate"><span class="pre">Datetime</span></code> column.</b></p></li>
+<li><p>Convert the data into a one-hot encoded format containing the count of items sold in a transaction. <b>Hint: You need to create the <code class="docutils literal notranslate"><span class="pre">Count</span></code> column to track the number of items sold in a transaction. You will then use the <code class="docutils literal notranslate"><span class="pre">pivot_table</span></code> method to create the one-hot encoded format.</b></p></li>
+<li><p>Encode the data into 1’s and 0’s to apply the apriori algorithm. <b>Hint:Result obtained in the above step will contain the actual number of items sold in a transaction. In order to apply Apriori, we just need to know whether an item is present in a transaction or not. </b></p></li>
+<li><p>Generate <b>frequent itemsets</b> and <b>association rules</b> with a minimum support threshold of 1% and a minimum lift value of 1. Sort them by <b>confidence values</b>.</p></li>
+<li><p>What <b>percentage of transactions</b> involved customers buying ‘Sandwich’ and ‘Coffee’? <b>Hint: Select only those association rules that have lift value greater than 1 and confidence value greater than 0.5 to generate the insights.</b></p></li>
+<li><p>What is the <b>probability</b> that a customer ‘Coffee’ given that he bought a ‘Juice’?</p></li>
+<li><p>Which item <strong>lifts</strong> the Coffee’s purchase by the most?</p></li>
+</ol>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="read-the-data-from-the-csv-file-into-a-dataframe">
+<h1>1. Read the data from the csv file into a dataframe.<a class="headerlink" href="#read-the-data-from-the-csv-file-into-a-dataframe" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">mlxtend.frequent_patterns</span> <span class="kn">import</span> <span class="n">apriori</span>
+<span class="kn">from</span> <span class="nn">mlxtend.frequent_patterns</span> <span class="kn">import</span> <span class="n">association_rules</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_22468</span>\<span class="mf">1830528870.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">mlxtend.frequent_patterns</span> <span class="kn">import</span> <span class="n">apriori</span>
+
+<span class="nn">c:\users\sk250164\desktop\mercury\jup\lib\site-packages\IPython\core\interactiveshell.py</span> in <span class="ni">run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2362</span>                 <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;local_ns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_local_scope</span><span class="p">(</span><span class="n">stack_depth</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2363</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2364</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2365</span>             <span class="k">return</span> <span class="n">result</span>
+<span class="g g-Whitespace">   </span><span class="mi">2366</span> 
+
+<span class="nn">c:\users\sk250164\desktop\mercury\jup\lib\site-packages\decorator.py</span> in <span class="ni">fun</span><span class="nt">(*args, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">kwsyntax</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span>                 <span class="n">args</span><span class="p">,</span> <span class="n">kw</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kw</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">232</span>             <span class="k">return</span> <span class="n">caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">extras</span> <span class="o">+</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="n">fun</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span>     <span class="n">fun</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__doc__</span>
+
+<span class="nn">c:\users\sk250164\desktop\mercury\jup\lib\site-packages\IPython\core\magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="c1"># but it&#39;s overkill for just that one bit of state.</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">def</span> <span class="nf">magic_deco</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">call</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span> 
+<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+
+<span class="nn">c:\users\sk250164\desktop\mercury\jup\lib\site-packages\IPython\core\magics\pylab.py</span> in <span class="ni">matplotlib</span><span class="nt">(self, line)</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Available matplotlib backends: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">backends_list</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span>         <span class="k">else</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">99</span>             <span class="n">gui</span><span class="p">,</span> <span class="n">backend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">enable_matplotlib</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">100</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_show_matplotlib_backend</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="p">,</span> <span class="n">backend</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> 
+
+<span class="nn">c:\users\sk250164\desktop\mercury\jup\lib\site-packages\IPython\core\interactiveshell.py</span> in <span class="ni">enable_matplotlib</span><span class="nt">(self, gui)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3531</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">3532</span><span class="s2">         from IPython.core import pylabtools as pt</span>
+<span class="ne">-&gt; </span><span class="mi">3533</span><span class="s2">         from matplotlib_inline.backend_inline import configure_inline_support</span>
+<span class="g g-Whitespace">   </span><span class="mi">3534</span><span class="s2">         gui, backend = pt.find_gui_and_backend(gui, self.pylab_gui_select)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3535</span><span class="s2"> </span>
+
+<span class="ne">c</span>:\users\sk250164\desktop\mercury\jup\lib\site-packages\matplotlib_inline\backend_inline.py in &lt;module&gt;
+<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="s2"> # Distributed under the terms of the BSD 3-Clause License.</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span><span class="s2"> </span>
+<span class="ne">----&gt; </span><span class="mi">6</span><span class="s2"> import matplotlib</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span><span class="s2"> from matplotlib.backends.backend_agg import (  # noqa</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="s2">     new_figure_manager,</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load the data into a pandas dataframe and take a look at the first 10 rows</span>
+<span class="n">confec</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;confectionary.csv&quot;</span><span class="p">)</span>
+<span class="n">confec</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">confec</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="step-2-convert-the-datetime-object-column-to-a-datetime-column-and-set-it-as-index">
+<h2>Step 2: Convert the <code class="docutils literal notranslate"><span class="pre">Datetime</span></code> object column to a datetime column and set it as index.<a class="headerlink" href="#step-2-convert-the-datetime-object-column-to-a-datetime-column-and-set-it-as-index" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">confec</span><span class="p">[</span><span class="s1">&#39;Datetime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">confec</span><span class="p">[</span><span class="s1">&#39;Datetime&#39;</span><span class="p">])</span>
+<span class="n">confec</span> <span class="o">=</span> <span class="n">confec</span><span class="p">[[</span><span class="s2">&quot;Datetime&quot;</span><span class="p">,</span> <span class="s2">&quot;Transaction&quot;</span><span class="p">,</span> <span class="s2">&quot;Item&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Datetime&quot;</span><span class="p">)</span>
+<span class="n">confec</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-3-identify-the-top-10-best-selling-and-worst-selling-items-in-the-confectionary">
+<h1>Step 3: Identify the top-10 best-selling and worst-selling items in the confectionary.<a class="headerlink" href="#step-3-identify-the-top-10-best-selling-and-worst-selling-items-in-the-confectionary" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#List the top 10 best-selling items</span>
+<span class="n">confec</span><span class="o">.</span><span class="n">Item</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#List the bottom 10 selling items</span>
+<span class="n">confec</span><span class="o">.</span><span class="n">Item</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="o">-</span><span class="mi">10</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-4-find-the-day-and-the-timeslot-in-which-most-of-the-sales-are-happening-in-the-confectionary">
+<h1>Step 4: Find the day and the timeslot in which most of the sales are happening in the confectionary.<a class="headerlink" href="#step-4-find-the-day-and-the-timeslot-in-which-most-of-the-sales-are-happening-in-the-confectionary" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Extract the hour and Weekday values from the index</span>
+<span class="n">confec</span><span class="p">[</span><span class="s2">&quot;Hour&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">confec</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">hour</span>
+<span class="n">confec</span><span class="p">[</span><span class="s2">&quot;Weekday&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">confec</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">weekday</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Find the peak hours by grouping the item count</span>
+<span class="n">confec_groupby_hour</span> <span class="o">=</span> <span class="n">confec</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Hour&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Item&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">count</span><span class="p">()})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">confec_groupby_hour</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can see from the above result that the most sales happen between <b>11 am - 12 noon</b>. Sales actually pick up between 9 am - 4 pm and are pretty down outside these hours. Most of the sales happen during the lunch hours.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Find the most popular weekday by grouping the item count. Weekday 0 corresponds to Monday.</span>
+<span class="n">confec_groupby_day</span> <span class="o">=</span> <span class="n">confec</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Weekday&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Item&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">count</span><span class="p">()})</span>
+<span class="n">confec_groupby_day</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can see from the above result that most sales happen on a <b>Saturday</b>. Weekend sales seem to be far higher than compared to weekdays. Marketing efforts are needed to boost the sales during weekdays.</p>
+<section id="step-5-convert-the-data-into-a-one-hot-encoded-format-containing-the-count-of-items-sold-in-a-transaction">
+<h2>Step 5: Convert the data into a one-hot encoded format containing the count of items sold in a transaction.##<a class="headerlink" href="#step-5-convert-the-data-into-a-one-hot-encoded-format-containing-the-count-of-items-sold-in-a-transaction" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>Apriori</strong> function in the MLxtend library expects data in a one-hot encoded pandas DataFrame. This means that all the data for a transaction must be included in one row and the items must be one-hot encoded. Example below:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Coffee</p></th>
+<th class="head"><p>Cake</p></th>
+<th class="head"><p>Bread</p></th>
+<th class="head"><p>Cookie</p></th>
+<th class="head"><p>Muffin</p></th>
+<th class="head"><p>Tea</p></th>
+<th class="head"><p>Milk</p></th>
+<th class="head"><p>Juice</p></th>
+<th class="head"><p>Sandwich</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">confec</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create a &#39;Count&#39; column to get the number of items sold per transaction </span>
+<span class="n">confec</span> <span class="o">=</span> <span class="n">confec</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Transaction&quot;</span><span class="p">,</span><span class="s2">&quot;Item&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
+<span class="n">confec</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Pivot the data into a one-hot encoded format</span>
+<span class="n">confec_basket</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">confec</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;Transaction&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Item&#39;</span><span class="p">,</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">confec_basket</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">confec_basket</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note:</strong> At this stage, the one-hot encoded table shows the count of items purchased as result. We just need to know whether an item is present in a transaction or not.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-6-encode-the-data-into-1-s-and-0-s-to-apply-the-apriori-algorithm">
+<h1>Step 6: Encode the data into 1’s and 0’s to apply the apriori algorithm.<a class="headerlink" href="#step-6-encode-the-data-into-1-s-and-0-s-to-apply-the-apriori-algorithm" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the encoding function</span>
+<span class="k">def</span> <span class="nf">encode_units</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">confec_basket_sets</span> <span class="o">=</span> <span class="n">confec_basket</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="n">encode_units</span><span class="p">)</span>
+
+<span class="n">confec_basket_sets</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After applying the encoding function, the cell value for all the items has become either a “1” or a “0”, which is what we need for the <strong>Apriori</strong> function.</p>
+<section id="step-7-generate-b-frequent-itemsets-b-and-b-association-rules-b-with-a-minimum-support-threshold-of-1-and-a-minimum-lift-value-of-1-sort-them-by-confidence-values">
+<h2>Step 7:Generate <b>frequent itemsets</b> and <b>association rules</b> with a minimum support threshold of 1% and a minimum lift value of 1. Sort them by confidence values.<a class="headerlink" href="#step-7-generate-b-frequent-itemsets-b-and-b-association-rules-b-with-a-minimum-support-threshold-of-1-and-a-minimum-lift-value-of-1-sort-them-by-confidence-values" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frequent_itemsets</span> <span class="o">=</span> <span class="n">apriori</span><span class="p">(</span><span class="n">confec_basket_sets</span><span class="p">,</span> <span class="n">min_support</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">use_colnames</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#generate association rules and sort them by confidence in ascending order</span>
+<span class="n">rules</span> <span class="o">=</span> <span class="n">association_rules</span><span class="p">(</span><span class="n">frequent_itemsets</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;lift&quot;</span><span class="p">,</span> <span class="n">min_threshold</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rules</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;confidence&quot;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">rules</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-8-what-percentage-of-transactions-involved-customers-buying-sandwich-and-coffee">
+<h1>Step 8: What percentage of transactions involved customers buying ‘Sandwich’ and ‘Coffee’?<a class="headerlink" href="#step-8-what-percentage-of-transactions-involved-customers-buying-sandwich-and-coffee" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#select only those rules which have lift &gt; 1 and confidence &gt; 0.5</span>
+<span class="n">rules</span><span class="p">[</span> <span class="p">(</span><span class="n">rules</span><span class="p">[</span><span class="s1">&#39;lift&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span>
+       <span class="p">(</span><span class="n">rules</span><span class="p">[</span><span class="s1">&#39;confidence&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">)</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the above table, you can observe that the <b>support</b> value for the association rule involving Sandwich and Coffee is 0.038. This means out of all the transactions, <b>3.8%</b> of the transactions involved customers buying Sandwich and Coffee</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-9-what-is-the-b-probability-b-that-a-customer-coffee-given-that-he-bought-a-juice">
+<h1>Step 9: What is the <b>probability</b> that a customer ‘Coffee’ given that he bought a ‘Juice’?<a class="headerlink" href="#step-9-what-is-the-b-probability-b-that-a-customer-coffee-given-that-he-bought-a-juice" title="Permalink to this headline">¶</a></h1>
+<p>From the above association rule table, you can observe that the <b>confidence</b> value for the association rule involving Juice and Coffee is 0.532. This implies that whenever a customer buys Juice, there is a <b>53.2%</b> chance that he will also buy ‘Coffee’.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-10-which-item-lifts-the-coffee-s-purchase-by-the-most">
+<h1>Step 10:Which item <strong>lifts</strong> the Coffee’s purchase by the most?<a class="headerlink" href="#step-10-which-item-lifts-the-coffee-s-purchase-by-the-most" title="Permalink to this headline">¶</a></h1>
+<p>If you observe all the association rules in the above table, you can notice that the <b>lift</b> value(1.47) is the highest for the rule having ‘Toast’ as the antecedent and ‘Coffee’ as the consequent. This implies that the purchase of <b>’Toast’</b> lifts the chances of someone buying ‘Coffee’ by 1.47 times.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="Keyword-Extraction-Resume-Using-Spacy.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">&lt;no title&gt;</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Sai Charan Tej<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
