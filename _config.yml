@@ -86,10 +86,10 @@ download_page_header             : "Made with Jupyter Book" # A header that will
 #######################################################################################
 # Jupyter book settings you probably don't need to change
 
-#content_folder_name       : "content"  # The folder where your raw content (notebooks/markdown files) are located
-#images_url                : "/assets/images" # Path to static image files
-#css_url                   : "/assets/css" # Path to static CSS files
-#js_url                    : "/assets/js" # Path to JS files
+#content_folder_name       : ""  # The folder where your raw content (notebooks/markdown files) are located
+images_url                : "_static/images" # Path to static image files
+css_url                   : "_static/css" # Path to static CSS files
+js_url                    : "_static/js" # Path to JS files
 #custom_static_url         : "/assets/custom" # Path to user's custom CSS/JS files
 
 #######################################################################################
